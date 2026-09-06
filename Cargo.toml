@@ -10,7 +10,7 @@ keywords = ["pizza", "english", "stemmer", "kstem", "nlp"]
 
 [features]
 default = []
-std = ["pizza-engine/std"]
+std = ["pizza-engine/std", "once_cell/std"]
 
 [dependencies]
 pizza-engine = { path = "../../lib/engine", default-features = false }
