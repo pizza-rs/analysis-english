@@ -1,7 +1,9 @@
 //! Comprehensive tests for pizza-analysis-english.
 
 use pizza_analysis_english::*;
-use pizza_engine::analysis::{AnalysisFactory, Token, TokenFilter};
+use pizza_engine::analysis::AnalysisFactory;
+use pizza_engine::analysis::Token;
+use pizza_engine::analysis::TokenFilter;
 
 fn make_token(term: &str) -> Token<'_> {
     Token::new(term, 0, term.len() as u32, 0)
@@ -140,7 +142,9 @@ fn stop_construction() {
 #[test]
 fn stop_filters_common_words() {
     let f = EnglishStopFilter::new();
-    let stop_words = ["the", "is", "at", "which", "on", "a", "an", "and", "or", "not"];
+    let stop_words = [
+        "the", "is", "at", "which", "on", "a", "an", "and", "or", "not",
+    ];
     for word in &stop_words {
         let mut token = make_token(word);
         let (deleted, _) = f.filter(&mut token);

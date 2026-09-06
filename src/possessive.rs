@@ -2,7 +2,8 @@
 
 use alloc::borrow::Cow;
 use alloc::vec::Vec;
-use pizza_engine::analysis::{Token, TokenFilter};
+use pizza_engine::analysis::Token;
+use pizza_engine::analysis::TokenFilter;
 
 /// Removes English possessive suffixes ('s and s').
 ///

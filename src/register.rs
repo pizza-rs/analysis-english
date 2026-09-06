@@ -4,16 +4,24 @@ use alloc::boxed::Box;
 use alloc::vec;
 use alloc::vec::Vec;
 
-use pizza_engine::analysis::{
-    Analyzer, AnalysisFactory, Normalizer, StandardTokenizer, TokenFilter, Tokenizer,
-    LowercaseNormalizer,
-};
+use pizza_engine::analysis::AnalysisFactory;
+use pizza_engine::analysis::Analyzer;
+use pizza_engine::analysis::LowercaseNormalizer;
+use pizza_engine::analysis::Normalizer;
+use pizza_engine::analysis::StandardTokenizer;
+use pizza_engine::analysis::TokenFilter;
+use pizza_engine::analysis::Tokenizer;
 
-use crate::{EnglishPossessiveFilter, EnglishStopFilter, KStemFilter};
+use crate::EnglishPossessiveFilter;
+use crate::EnglishStopFilter;
+use crate::KStemFilter;
 
 /// Register English token filters and the `"english"` analyzer.
 pub fn register_all(factory: &mut AnalysisFactory) {
-    factory.register_token_filter("english_possessive", Box::new(EnglishPossessiveFilter::new()));
+    factory.register_token_filter(
+        "english_possessive",
+        Box::new(EnglishPossessiveFilter::new()),
+    );
     factory.register_token_filter("kstem", Box::new(KStemFilter::new()));
     factory.register_token_filter("english_stop", Box::new(EnglishStopFilter::new()));
 
